@@ -1,0 +1,46 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+game:GetService("GuiService"):ClearError()
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+
+local req = http_request or request or syn.request
+
+if not req then
+    OrionLib:MakeNotification({
+	Name = "Nextix Hub Error",
+	Content = "Your exploit is unsupported with Nextix Hub!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+    
+    return
+end
+
+local response = req({
+    Url = "https://raw.githubusercontent.com/nextixdev/Nextix-Hub/main/Games/" .. game.PlaceId .. ".lua",
+    Method = "GET"
+})
+
+if response.Body ~= "404: Not Found" then
+    
+    -- Anti AFK
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 2, true, nil, 0)
+        wait(1)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 2, false, nil, 0)
+    end)
+    
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nextixdev/Nextix-Hub/main/Games/" .. game.PlaceId .. ".lua", true))()
+else
+    OrionLib:MakeNotification({
+	Name = "Nextix Hub Error",
+	Content = "The game you are trying to play is not supported with Nextix Hub!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+    
+    return
+end
