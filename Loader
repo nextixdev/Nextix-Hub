@@ -12,7 +12,7 @@ if not req then
     OrionLib:MakeNotification({
     Name = "Nextix Hub Error",
     Content = "Your exploit is unsupported with Nextix Hub!",
-    Image = "rbxassetid://4483345998",
+    Image = "rbxassetid://407161956",
     Time = 5
 })
     
@@ -38,7 +38,7 @@ else
     OrionLib:MakeNotification({
     Name = "Nextix Hub Error",
     Content = "The game you are trying to play is not supported with Nextix Hub!",
-    Image = "rbxassetid://4483345998",
+    Image = "rbxassetid://407161956",
     Time = 5
 })
     
